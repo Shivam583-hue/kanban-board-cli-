@@ -1,4 +1,4 @@
-module kancli
+module github.com/Shivam583-hue/kanban-board-cli-
 
 go 1.23.4
 
