@@ -132,6 +132,12 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			newForm := NewForm(m.focused)
 			models[form] = newForm // Update the form model in the slice
 			return models[form], nil
+		case "x":
+			selectedItem := m.lists[m.focused].SelectedItem()
+			if selectedTask, ok := selectedItem.(task); ok {
+				m.lists[selectedTask.status].RemoveItem(m.lists[m.focused].Index())
+			}
+			return m, nil
 		}
 	case task:
 		task := msg
